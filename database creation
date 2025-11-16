@@ -1,0 +1,86 @@
+CREATE TABLE user_type (
+    user_type_id INT PRIMARY KEY,
+    role ENUM('Resident', 'staff', 'admin')
+);
+
+CREATE TABLE users (
+    user_id INT PRIMARY KEY,
+    user_type_id INT,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    FOREIGN KEY (user_type_id) REFERENCES user_type(user_type_id)
+);
+
+CREATE TABLE Patient (
+    patient_id INT PRIMARY KEY,
+    user_id INT,
+    name VARCHAR(255),
+    Date_of_Birth DATE,
+    address TEXT,
+    contact_number INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE staff_position (
+    staff_type_id INT PRIMARY KEY,
+    role TEXT
+);
+
+CREATE TABLE staff (
+    staff_id INT PRIMARY KEY,
+    user_id INT,
+    staff_type_id INT,
+    name VARCHAR(255),
+    contact_number INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (staff_type_id) REFERENCES staff_position(staff_type_id)
+);
+
+CREATE TABLE Appointment (
+    appointment_id INT PRIMARY KEY,
+    patient_id INT,
+    staff_id INT,
+    date DATE,
+    time TIME,
+    FOREIGN KEY (patient_id) REFERENCES Patient(patient_id),
+    FOREIGN KEY (staff_id) REFERENCES staff(staff_id)
+);
+
+CREATE TABLE Notification (
+    notification_id INT PRIMARY KEY,
+    appointment_id INT,
+    message TEXT,
+    date_sent DATETIME,
+    status ENUM('Unread', 'Read'),
+    FOREIGN KEY (appointment_id) REFERENCES Appointment(appointment_id)
+);
+
+CREATE TABLE MedicalRecord (
+    record_id INT PRIMARY KEY,
+    patient_id INT,
+    worker_id INT,
+    visit_date DATE,
+    visit_type ENUM('Walk-In', 'Appointment'),
+    diagnosis TEXT,
+    treatment TEXT,
+    notes TEXT,
+    FOREIGN KEY (patient_id) REFERENCES Patient(patient_id),
+    FOREIGN KEY (worker_id) REFERENCES staff(staff_id)
+);
+
+CREATE TABLE Medical_Inventory (
+    medicine_id INT PRIMARY KEY,
+    edit_by INT,
+    medicine_name VARCHAR(255),
+    stock_quantity INT,
+    FOREIGN KEY (edit_by) REFERENCES staff(staff_id)
+);
+
+CREATE TABLE Reports (
+    report_id INT PRIMARY KEY,
+    generated_by INT,
+    generate_date DATETIME,
+    patientsserved INT,
+    note TEXT,
+    FOREIGN KEY (generated_by) REFERENCES staff(staff_id)
+);
