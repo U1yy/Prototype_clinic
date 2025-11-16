@@ -1,0 +1,45 @@
+body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .slip-box {
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 350px;
+    }
+    .slip-box h2 {
+      color: #2e7d32;
+      margin-bottom: 15px;
+    }
+    .slip-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .slip-box button {
+      background: #2e7d32;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .slip-box button:hover {
+      background: #1b5e20;
+    }
+    .slip-box .note {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #555;
+    }

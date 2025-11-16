@@ -1,0 +1,83 @@
+ body{
+  font-family: Arial, sans-serif;
+  background-color: #e8eef6;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  max-width: 900px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* --- Date Grid --- */
+.date-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.date-box {
+  background: #c6c6c6;
+  color: #000;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-box:hover {
+  background-color: #66b7ff;
+  transform: translateY(-3px);
+}
+
+.date-box.selected {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.day-name {
+  font-size: 14px;
+}
+
+.day-number {
+  font-size: 20px;
+}
+
+/* --- Time Grid --- */
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.time-slot {
+  background: #8dd1ff;
+  border: none;
+  padding: 10px 0;
+  width: 70px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 100;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.time-slot:hover {
+  background: #66b7ff;
+  transform: scale(1.05);
+}
+
+.time-slot.selected {
+  background: #4a90e2;
+  color: white;
+}
